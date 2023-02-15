@@ -1,15 +1,15 @@
 def check_square_magic(square):
-    # Récupère l'ordre du carré
+    # Recover the order of the square
     n = len(square)
 
-    # Calcule la somme attendue pour chaque ligne, colonne et diagonale du carré
+    # Calculates the expected sum for each row, column and diagonal of the square
     expected_sum = n * (n**2 + 1) // 2
 
-    # Vérifie si la somme de chaque ligne, colonne et diagonale est égale à la somme attendue
+    # Checks if the sum of each row, column and diagonal is equal to the expected sum
     for i in range(n):
         row_sum = sum(square[i])
         if row_sum != expected_sum:
-            print("La ligne {} ne respecte pas la condition du carré magique.".format(i))
+            print("The line {} does not satisfy the magic square condition.".format(i))
             return False
 
     for j in range(n):
@@ -17,7 +17,7 @@ def check_square_magic(square):
         for i in range(n):
             col_sum += square[i][j]
         if col_sum != expected_sum:
-            print("La colonne {} ne respecte pas la condition du carré magique.".format(j))
+            print("The {} column does not meet the magic square condition.".format(j))
             return False
 
     diag_sum1 = 0
@@ -26,27 +26,27 @@ def check_square_magic(square):
         diag_sum1 += square[i][i]
         diag_sum2 += square[i][n-i-1]
     if diag_sum1 != expected_sum or diag_sum2 != expected_sum:
-        print("Les diagonales ne respectent pas la condition du carré magique.")
+        print("The diagonals do not satisfy the magic square condition.")
         return False
 
-    # Si toutes les sommes sont égales à la somme attendue, le carré est magique
+    # If all sums are equal to the expected sum, the square is magic
     return True
 
-# Demande à l'utilisateur de saisir l'ordre du carré
-n = int(input("Veuillez saisir l'ordre du carré : "))
+# Asks the user to enter the order of the square
+n = int(input("Please enter the order of the square: "))
 
-# Initialise un tableau 2D pour stocker les valeurs du carré
+# Initialize a 2D array to store the values of the square
 square = []
 for i in range(n):
     row = []
     for j in range(n):
-        # Demande à l'utilisateur de saisir la valeur de chaque case
-        val = int(input("Veuillez saisir la valeur de la case ({},{}) : ".format(i, j)))
+        # Asks the user to enter the value of each box
+        val = int(input("Please enter the value of the box ({},{}) : ".format(i, j)))
         row.append(val)
     square.append(row)
 
 # Vérifie si le carré est magique
 if check_square_magic(square):
-    print("Félicitations ! Votre carré est magique.")
+    print("Congratulations! Your square is magic.")
 else:
-    print("Désolé, votre carré ne respecte pas la condition du carré magique.")
+    print("Sorry, your square does not meet the magic square condition.")
